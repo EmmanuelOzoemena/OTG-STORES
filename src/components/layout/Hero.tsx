@@ -53,7 +53,7 @@ export default function Hero() {
           className="lg:col-span-7 flex flex-col items-start gap-6 text-left"
         >
           <motion.div
-            variants={itemVariants}
+            // variants={itemVariants}
             className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-semibold uppercase tracking-widest text-brand-muted"
           >
             <span className="w-1.5 h-1.5 bg-white rounded-full animate-pulse" />
@@ -61,7 +61,7 @@ export default function Hero() {
           </motion.div>
 
           <motion.h1
-            variants={itemVariants}
+            // variants={itemVariants}
             className="text-4xl sm:text-6xl xl:text-7xl font-black tracking-tighter leading-[0.9] text-brand-accent uppercase"
           >
             Aesthetic <br />
@@ -71,7 +71,7 @@ export default function Hero() {
           </motion.h1>
 
           <motion.p
-            variants={itemVariants}
+            // variants={itemVariants}
             className="max-w-md text-base sm:text-lg text-brand-muted font-normal leading-relaxed"
           >
             Experience footwear curation crafted beyond standard limits. Premium
@@ -80,7 +80,7 @@ export default function Hero() {
           </motion.p>
 
           <motion.div
-            variants={itemVariants}
+            // variants={itemVariants}
             className="flex flex-wrap items-center gap-4 w-full sm:w-auto"
           >
             <button className="w-full sm:w-auto px-8 py-4 bg-brand-accent text-brand-bg text-sm font-bold tracking-wide rounded-full flex items-center justify-center gap-2 hover:bg-white/90 transition-all duration-300 transform active:scale-95 group">
