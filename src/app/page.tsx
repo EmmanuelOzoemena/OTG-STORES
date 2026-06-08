@@ -1,4 +1,5 @@
 import Hero from "@/components/layout/Hero";
+import SocialFeedGrid from "@/features/products/components/SocialFeedGrid";
 
 export default function Home() {
   return (
@@ -6,7 +7,9 @@ export default function Home() {
       {/* Cinematic Hero Pitch Section */}
       <Hero />
 
-      {/* Future Section Enclosures: Product Grids, Curated Feeds, Drawer Triggers go here */}
+      {/* High-Fidelity Interactive Social Lookbook Store */}
+      <SocialFeedGrid />
+
       <div className="h-32 bg-gradient-to-t from-black to-transparent" />
     </main>
   );
