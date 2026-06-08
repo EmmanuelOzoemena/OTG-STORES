@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/layout/SmoothScroll";
 import Navbar from "@/components/layout/Navbar";
+import CartDrawer from "@/features/cart/components/CartDrawer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,6 +25,8 @@ export default function RootLayout({
         <SmoothScroll>
           <Navbar />
           {children}
+          {/* Universal deployment-safe structural checkout sheet */}
+          <CartDrawer />
         </SmoothScroll>
       </body>
     </html>

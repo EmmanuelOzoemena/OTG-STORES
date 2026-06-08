@@ -4,13 +4,15 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { ShoppingBag, Menu, X, ArrowRight } from "lucide-react";
+import { useCart } from "@/hooks/useCart";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  // Mock cart items count for visual engagement in the demo
-  const cartCount = 2;
+  // Connect global drawer controls and item parameters
+  const { openCart, items } = useCart();
+  const cartCount = items.reduce((acc, item) => acc + item.quantity, 0);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -68,13 +70,17 @@ export default function Navbar() {
 
           {/* Action Items */}
           <div className="flex items-center gap-4">
-            {/* Cart Trigger Button */}
-            <button className="relative p-2.5 rounded-full glass-interactive border border-white/5 flex items-center justify-center text-brand-accent">
+            {/* Cart Trigger Button connected to store */}
+            <button
+              onClick={openCart}
+              className="relative p-2.5 rounded-full glass-interactive border border-white/5 flex items-center justify-center text-brand-accent transform active:scale-95 transition-transform"
+            >
               <ShoppingBag size={18} strokeWidth={2} />
               {cartCount > 0 && (
                 <motion.span
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
+                  key={cartCount} // Re-triggers scale pop animation when count changes
                   className="absolute -top-1 -right-1 w-4 h-4 bg-brand-accent text-brand-bg text-[10px] font-bold rounded-full flex items-center justify-center"
                 >
                   {cartCount}

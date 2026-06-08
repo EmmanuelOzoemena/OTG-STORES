@@ -4,12 +4,16 @@ import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Heart, ShoppingCart, X, Check } from "lucide-react";
 import { MOCK_SOCIAL_FEED, SocialFeedItem } from "../mockData";
+import { useCart } from "@/hooks/useCart";
 
 export default function SocialFeedGrid() {
   const [selectedItem, setSelectedItem] = useState<SocialFeedItem | null>(null);
   const [selectedSize, setSelectedSize] = useState<number | null>(null);
   const [isAdded, setIsAdded] = useState(false);
   const videoRefs = useRef<{ [key: string]: HTMLVideoElement | null }>({});
+
+  // Hook up global store dispatch method
+  const { addItem } = useCart();
 
   const handleMouseEnter = (id: string) => {
     const video = videoRefs.current[id];
@@ -25,13 +29,18 @@ export default function SocialFeedGrid() {
   };
 
   const handleAddToCart = () => {
-    if (!selectedSize) return;
+    if (!selectedSize || !selectedItem) return;
+
     setIsAdded(true);
+
+    // Inject custom selected item straight into our checkout utility layer
+    addItem(selectedItem.product, selectedSize);
+
     setTimeout(() => {
       setIsAdded(false);
       setSelectedItem(null);
       setSelectedSize(null);
-    }, 1500);
+    }, 1000);
   };
 
   return (
